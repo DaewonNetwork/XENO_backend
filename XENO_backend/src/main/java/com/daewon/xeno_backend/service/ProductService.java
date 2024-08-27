@@ -2,8 +2,6 @@
 package com.daewon.xeno_backend.service;
 
 
-import com.daewon.xeno_backend.domain.Products;
-
 import com.daewon.xeno_backend.dto.page.PageInfinityResponseDTO;
 import com.daewon.xeno_backend.dto.page.PageRequestDTO;
 import com.daewon.xeno_backend.dto.page.PageResponseDTO;

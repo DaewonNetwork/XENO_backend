@@ -2,6 +2,7 @@ package com.daewon.xeno_backend.domain;
 
 
 import com.daewon.xeno_backend.domain.auth.Users;
+import com.daewon.xeno_backend.domain.product.ProductsOption;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.OnDelete;

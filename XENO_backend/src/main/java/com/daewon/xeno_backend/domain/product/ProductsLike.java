@@ -1,4 +1,4 @@
-package com.daewon.xeno_backend.domain;
+package com.daewon.xeno_backend.domain.product;
 
 
 import jakarta.persistence.*;

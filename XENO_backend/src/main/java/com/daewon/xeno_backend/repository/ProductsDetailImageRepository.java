@@ -1,8 +1,7 @@
 package com.daewon.xeno_backend.repository;
 
 
-import com.daewon.xeno_backend.domain.Products;
-import com.daewon.xeno_backend.domain.ProductsDetailImage;
+import com.daewon.xeno_backend.domain.product.ProductsDetailImage;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;

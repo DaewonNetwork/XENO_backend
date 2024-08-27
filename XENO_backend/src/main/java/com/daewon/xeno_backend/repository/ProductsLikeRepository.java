@@ -2,7 +2,7 @@ package com.daewon.xeno_backend.repository;
 
 
 
-import com.daewon.xeno_backend.domain.ProductsLike;
+import com.daewon.xeno_backend.domain.product.ProductsLike;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 

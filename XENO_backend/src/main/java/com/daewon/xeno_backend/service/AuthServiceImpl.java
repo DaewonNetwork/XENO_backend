@@ -6,6 +6,8 @@ import com.daewon.xeno_backend.domain.auth.Users;
 import com.daewon.xeno_backend.dto.auth.AuthSignupDTO;
 import com.daewon.xeno_backend.dto.auth.SellerInfoCardDTO;
 import com.daewon.xeno_backend.dto.auth.TokenDTO;
+import com.daewon.xeno_backend.dto.user.UserUpdateDTO;
+import com.daewon.xeno_backend.exception.UserNotFoundException;
 import com.daewon.xeno_backend.repository.RefreshTokenRepository;
 import com.daewon.xeno_backend.repository.UserRepository;
 import com.daewon.xeno_backend.utils.JWTUtil;
@@ -16,6 +18,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.Map;
 import java.util.Optional;
 
@@ -102,6 +105,36 @@ public class AuthServiceImpl implements AuthService {
             log.info("클라이언트가 입력한 이메일" + email + "을 DB에서 찾지 못했습니다");
             return null;
         }
+    }
+
+    // user정보 password, name, address, phoneNumber 수정
+    @Transactional
+    @Override
+    public Users updateUser(String email, UserUpdateDTO updateDTO) throws UserNotFoundException {
+        Users user = userRepository.findByEmail(email)
+                .orElseThrow(() -> new UserNotFoundException("User email을 찾을 수 없음 : " + email));
+
+        // password 업데이트
+        if (updateDTO.getPassword() != null && !updateDTO.getPassword().isEmpty()) {
+            user.setPassword(passwordEncoder.encode(updateDTO.getPassword()));
+        }
+
+        // name 업데이트
+        if (updateDTO.getName() != null && !updateDTO.getName().isEmpty()) {
+            user.setName(updateDTO.getName());
+        }
+
+        // address 업데이트
+        if (updateDTO.getAddress() != null && !updateDTO.getAddress().isEmpty()) {
+            user.setAddress(updateDTO.getAddress());
+        }
+
+        // phoneNumber 업데이트
+        if (updateDTO.getPhoneNumber() != null && !updateDTO.getPhoneNumber().isEmpty()) {
+            user.setPhoneNumber(updateDTO.getPhoneNumber());
+        }
+
+        return userRepository.save(user);
     }
 
     @Override

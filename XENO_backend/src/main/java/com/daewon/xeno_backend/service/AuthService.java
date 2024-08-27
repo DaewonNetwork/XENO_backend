@@ -4,6 +4,9 @@ import com.daewon.xeno_backend.domain.auth.Users;
 import com.daewon.xeno_backend.dto.auth.AuthSignupDTO;
 import com.daewon.xeno_backend.dto.auth.SellerInfoCardDTO;
 import com.daewon.xeno_backend.dto.auth.TokenDTO;
+import com.daewon.xeno_backend.dto.review.ReviewUpdateDTO;
+import com.daewon.xeno_backend.dto.user.UserUpdateDTO;
+import com.daewon.xeno_backend.exception.UserNotFoundException;
 import org.springframework.security.core.userdetails.UserDetails;
 
 public interface AuthService {
@@ -22,6 +25,8 @@ public interface AuthService {
     Users signupSeller(AuthSignupDTO authSignupDTO) throws UserEmailExistException;
 
     Users signin(final String email, final String password);
+
+    Users updateUser(String email, UserUpdateDTO updateDTO) throws UserNotFoundException;
 
     SellerInfoCardDTO readSellerInfo(UserDetails userDetails);
 

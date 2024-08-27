@@ -1,7 +1,7 @@
 
 package com.daewon.xeno_backend.security.filter;
 
-import com.daewon.xeno_backend.domain.RefreshToken;
+import com.daewon.xeno_backend.domain.auth.RefreshToken;
 import com.daewon.xeno_backend.repository.RefreshTokenRepository;
 import com.daewon.xeno_backend.security.exception.RefreshTokenException;
 import com.daewon.xeno_backend.utils.JWTUtil;

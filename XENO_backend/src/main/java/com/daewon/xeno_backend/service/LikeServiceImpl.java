@@ -1,7 +1,9 @@
 package com.daewon.xeno_backend.service;
 
-import com.daewon.xeno_backend.domain.*;
 import com.daewon.xeno_backend.domain.auth.Users;
+import com.daewon.xeno_backend.domain.product.LikeProducts;
+import com.daewon.xeno_backend.domain.product.Products;
+import com.daewon.xeno_backend.domain.product.ProductsLike;
 import com.daewon.xeno_backend.repository.*;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;

@@ -1,9 +1,8 @@
 package com.daewon.xeno_backend.repository;
 
 
-import com.daewon.xeno_backend.domain.Products;
+import com.daewon.xeno_backend.domain.product.Products;
 
-import org.apache.commons.math3.stat.descriptive.summary.Product;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;

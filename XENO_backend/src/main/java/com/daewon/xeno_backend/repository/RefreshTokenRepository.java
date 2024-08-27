@@ -1,6 +1,6 @@
 package com.daewon.xeno_backend.repository;
 
-import com.daewon.xeno_backend.domain.RefreshToken;
+import com.daewon.xeno_backend.domain.auth.RefreshToken;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;

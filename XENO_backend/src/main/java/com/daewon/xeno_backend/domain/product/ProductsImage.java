@@ -1,4 +1,4 @@
-package com.daewon.xeno_backend.domain;
+package com.daewon.xeno_backend.domain.product;
 
 
 import jakarta.persistence.*;
@@ -14,21 +14,22 @@ import org.hibernate.annotations.OnDeleteAction;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-public class ProductsStar {
+public class ProductsImage {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY) // auto_increment와 같은
-  private long productStarId;
+  private long productImageId;
 
   @ManyToOne(fetch = FetchType.LAZY)
   @JoinColumn(name = "productId", referencedColumnName = "productId")
   @OnDelete(action = OnDeleteAction.CASCADE)
   private Products products;
 
-  private double starAvg;
-
-  private double starTotal;
-
-
+  private String url_1;
+  private String url_2;
+  private String url_3;
+  private String url_4;
+  private String url_5;
+  private String url_6;
 
 }

@@ -1,6 +1,6 @@
 package com.daewon.xeno_backend.repository;
 
-import com.daewon.xeno_backend.domain.ProductsSeller;
+import com.daewon.xeno_backend.domain.product.ProductsSeller;
 import com.daewon.xeno_backend.domain.auth.Users;
 import org.springframework.data.jpa.repository.JpaRepository;
 

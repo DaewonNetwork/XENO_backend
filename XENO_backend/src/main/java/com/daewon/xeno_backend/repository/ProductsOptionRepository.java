@@ -1,7 +1,6 @@
 package com.daewon.xeno_backend.repository;
 
-import com.daewon.xeno_backend.domain.ProductsOption;
-import com.daewon.xeno_backend.domain.Size;
+import com.daewon.xeno_backend.domain.product.ProductsOption;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;

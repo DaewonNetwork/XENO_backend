@@ -1,6 +1,6 @@
+package com.daewon.xeno_backend.domain.product;
 
-package com.daewon.xeno_backend.domain;
-
+import com.daewon.xeno_backend.domain.auth.Users;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.OnDelete;
@@ -13,22 +13,21 @@ import org.hibernate.annotations.OnDeleteAction;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-public class ProductsOption {
+public class ProductsSeller {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) // auto_increment와 같은
-    private long productOptionId;
+    private long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "productId", referencedColumnName = "productId")
     @OnDelete(action = OnDeleteAction.CASCADE)
     private Products products;
 
-    @Enumerated(EnumType.STRING)
-    private Size size;
 
-    private long stock;
-
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "userId", referencedColumnName = "userId")
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    private Users users;
 
 }
-
