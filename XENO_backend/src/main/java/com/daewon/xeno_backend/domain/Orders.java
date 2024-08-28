@@ -1,6 +1,7 @@
 package com.daewon.xeno_backend.domain;
 
 
+import com.daewon.xeno_backend.domain.auth.Users;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.OnDelete;
@@ -24,9 +25,9 @@ public class Orders extends BaseEntity {
   private String orderPayId;
 
   @ManyToOne()  // fetch = FetchType.LAZY
-  @JoinColumn(name = "productColorSizeId", referencedColumnName = "productColorSizeId")
+  @JoinColumn(name = "productOptionId", referencedColumnName = "productOptionId")
   @OnDelete(action = OnDeleteAction.CASCADE)
-  private ProductsColorSize productsColorSize;
+  private ProductsOption productsOption;
 
   @ManyToOne(fetch = FetchType.LAZY)
   @JoinColumn(name = "userId", referencedColumnName = "userId")

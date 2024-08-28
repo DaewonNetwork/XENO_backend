@@ -1,7 +1,7 @@
 package com.daewon.xeno_backend.repository;
 
 import com.daewon.xeno_backend.domain.Orders;
-import com.daewon.xeno_backend.domain.Users;
+import com.daewon.xeno_backend.domain.auth.Users;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -21,7 +21,7 @@ public interface OrdersRepository extends JpaRepository<Orders, Long> {
 
     Optional<Orders> findByOrderId(Long orderId);
 
-    @Query("SELECT o FROM Orders o WHERE o.productsColorSize.productsColor.products.productId = :productId ")
+    @Query("SELECT o FROM Orders o WHERE o.productsOption.products.productId = :productId ")
     List<Orders> findByProductId(@Param("productId") long productId);
 
     @Query("SELECT o FROM Orders o WHERE o.orderId = :orderId and o.user = :user")
