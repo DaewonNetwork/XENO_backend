@@ -56,6 +56,7 @@ public class CartServiceImpl implements CartService {
 
             ProductsOption productsOption = productsOptionRepository.findById(addToCartDTO.getProductOptionId()).orElse(null);
             ProductsImage productsImage = productsImageRepository.findByProductId(productsOption.getProducts().getProductId());
+
             if(cart == null) {
                 cart = Cart.builder()
                         .price(addToCartDTO.getPrice())
@@ -76,9 +77,10 @@ public class CartServiceImpl implements CartService {
 
     @Override
     public List<CartDTO> getCartItems(Long userId) {
-        Users user = userRepository.findById(userId)
-                .orElseThrow(() -> new UserNotFoundException("해당하는 유저를 찾을 수 없습니다."));
+        Users user = userRepository.findById(userId).orElseThrow(() -> new UserNotFoundException("해당하는 유저를 찾을 수 없습니다."));
+
         List<Cart> carts = cartRepository.findByUser(user);
+
         return carts.stream().map(this::convertToDTO).collect(Collectors.toList());
     }
 
@@ -128,15 +130,16 @@ public class CartServiceImpl implements CartService {
     public CartDTO convertToDTO(Cart cart) {
         CartDTO cartDTO = new CartDTO();
         cartDTO.setCartId(cart.getCartId());
+        cartDTO.setProductId(cart.getProductsOption().getProducts().getProductId());
         cartDTO.setProductOptionId(cart.getProductsOption().getProductOptionId());
         cartDTO.setQuantity(cart.getQuantity());
-        cartDTO.setAmount(cart.getPrice());
         cartDTO.setBrandName(cart.getProductsOption().getProducts().getBrandName());
-        cartDTO.setSale(cart.getProductsOption().getProducts().getIsSale());
-        cartDTO.setPrice(cart.getPrice()/cart.getQuantity());
         cartDTO.setProductName(cart.getProductsOption().getProducts().getName());
         cartDTO.setColor(cart.getProductsOption().getProducts().getColor());
-        cartDTO.setSize(String.valueOf(cart.getProductsOption().getSize()));
+        cartDTO.setSize(cart.getProductsOption().getSize());
+        cartDTO.setProductImage(cart.getProductsImage().getUrl_1());
+        cartDTO.setPrice(cart.getProductsOption().getProducts().getPrice());
+        cartDTO.setSale(cart.getProductsOption().getProducts().getIsSale());
 
 
         return cartDTO;
