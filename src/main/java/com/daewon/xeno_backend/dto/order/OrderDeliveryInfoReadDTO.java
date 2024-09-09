@@ -9,5 +9,4 @@ import lombok.NoArgsConstructor;
 public class OrderDeliveryInfoReadDTO {
     private String address;
     private String phoneNumber;
-    private String req;
 }

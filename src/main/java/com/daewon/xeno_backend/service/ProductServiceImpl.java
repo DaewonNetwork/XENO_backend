@@ -86,7 +86,7 @@ public class ProductServiceImpl implements ProductService {
             orderProductIdsReadDTO.setProductName(productOption.getProducts().getName());
             orderProductIdsReadDTO.setSize(productOption.getSize());
             orderProductIdsReadDTO.setColor(productOption.getProducts().getColor());
-            orderProductIdsReadDTO.setPrice(productOption.getProducts().getPrice());
+            orderProductIdsReadDTO.setPrice(productOption.getProducts().getIsSale() ? productOption.getProducts().getPriceSale() : productOption.getProducts().getPrice());
             orderProductIdsReadDTO.setProductOptionId(productOptionInfo.getProductOptionId());
             orderProductIdsReadDTO.setQuantity(productOptionInfo.getQuantity());
             orderProductIdsReadDTO.setProductImage(productsImageRepository.findByProductId(productOption.getProducts().getProductId()).getUrl_1());
@@ -808,7 +808,7 @@ public class ProductServiceImpl implements ProductService {
 
             Products products = productsRepository.findById(productId).orElse(null);
 
-            dto.setPrice(products.getIsSale() ? products.getPriceSale() : products.getPrice());
+            dto.setPrice(Objects.requireNonNull(products).getIsSale() ? products.getPriceSale() : products.getPrice());
 
                 List<ProductsOption> productsOptions = productsOptionRepository.findByProductId(products.getProductId());
                 for (ProductsOption pcs : productsOptions) {

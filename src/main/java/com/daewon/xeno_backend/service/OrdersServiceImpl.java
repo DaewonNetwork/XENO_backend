@@ -68,7 +68,6 @@ public class OrdersServiceImpl implements OrdersService {
         OrderDeliveryInfoReadDTO orderDeliveryInfoReadDTO = new OrderDeliveryInfoReadDTO();
 
         orderDeliveryInfoReadDTO.setPhoneNumber(user.getPhoneNumber());
-        orderDeliveryInfoReadDTO.setReq(orders.getReq());
         orderDeliveryInfoReadDTO.setAddress(user.getAddress());
 
         log.info(orderDeliveryInfoReadDTO);

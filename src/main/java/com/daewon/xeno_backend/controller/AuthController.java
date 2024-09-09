@@ -110,7 +110,7 @@ public class AuthController {
             Manager manager = authService.signupManager(userSignupDTO);
 
             Map<String, String> response = new HashMap<>();
-            response.put("message", "관리자 회원가입 완료");
+//            response.put("message", "관리자 회원가입 완료");
             response.put("manager", manager.toString());
 
             return ResponseEntity.status(201).body(response);

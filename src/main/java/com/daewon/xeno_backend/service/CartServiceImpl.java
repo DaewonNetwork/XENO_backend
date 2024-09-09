@@ -23,6 +23,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 @Service
@@ -55,7 +56,7 @@ public class CartServiceImpl implements CartService {
             cart = cartRepository.findByProductOptionIdAndUser(addToCartDTO.getProductOptionId(),users.getUserId()).orElse(null);
 
             ProductsOption productsOption = productsOptionRepository.findById(addToCartDTO.getProductOptionId()).orElse(null);
-            ProductsImage productsImage = productsImageRepository.findByProductId(productsOption.getProducts().getProductId());
+            ProductsImage productsImage = productsImageRepository.findByProductId(Objects.requireNonNull(productsOption).getProducts().getProductId());
 
             if(cart == null) {
                 cart = Cart.builder()
@@ -138,7 +139,7 @@ public class CartServiceImpl implements CartService {
         cartDTO.setColor(cart.getProductsOption().getProducts().getColor());
         cartDTO.setSize(cart.getProductsOption().getSize());
         cartDTO.setProductImage(cart.getProductsImage().getUrl_1());
-        cartDTO.setPrice(cart.getProductsOption().getProducts().getPrice());
+        cartDTO.setPrice(cart.getProductsOption().getProducts().getIsSale() ? cart.getProductsOption().getProducts().getPriceSale() : cart.getProductsOption().getProducts().getPrice());
         cartDTO.setSale(cart.getProductsOption().getProducts().getIsSale());
 
 
